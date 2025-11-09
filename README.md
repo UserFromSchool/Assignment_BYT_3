@@ -15,4 +15,6 @@ python3 -m venv .venv
 pip install -r requirement.txt
 pytest  # Will automatically locate the tests
 ```
-The `shapes.py` and `calculator.py` both can be run as main files and will show the functionality.
+The `shapes.py` and `calculator.py` both can be run as main files and will show the functionality.<br/><br/>
+Note: Task implied the operation and calculation should be done in the initializaiton. I was not sure if I understand correctly and how would that
+work, so ended up doing operation setting at initialization and then calculations done at calling the class using the operation.

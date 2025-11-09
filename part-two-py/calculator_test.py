@@ -16,7 +16,7 @@ from calculator import Calculator
     ]
 )
 def test_addition_correct_examples(left_operand: float, right_operand: float, expected: float) -> None:
-    assert Calculator("+").calculate(left_operand, right_operand) == pytest.approx(expected, abs=0.001)
+    assert Calculator("+")(left_operand, right_operand) == pytest.approx(expected, abs=0.001)
 
 
 @pytest.mark.parametrize(
@@ -31,7 +31,7 @@ def test_addition_correct_examples(left_operand: float, right_operand: float, ex
 )
 def test_addition_incorrect_examples(left_operand: float, right_operand: float) -> None:
     with pytest.raises(TypeError):
-        Calculator("+").calculate(left_operand, right_operand)
+        Calculator("+")(left_operand, right_operand)
 
 
 ########################## SUBTRACTION TESTS ##########################
@@ -49,7 +49,7 @@ def test_addition_incorrect_examples(left_operand: float, right_operand: float) 
     ]
 )
 def test_subtraction_correct_examples(left_operand: float, right_operand: float, expected: float) -> None:
-    assert Calculator("-").calculate(left_operand, right_operand) == pytest.approx(expected, abs=0.001)
+    assert Calculator("-")(left_operand, right_operand) == pytest.approx(expected, abs=0.001)
 
 
 @pytest.mark.parametrize(
@@ -64,7 +64,7 @@ def test_subtraction_correct_examples(left_operand: float, right_operand: float,
 )
 def test_subtraction_incorrect_examples(left_operand: float, right_operand: float) -> None:
     with pytest.raises(TypeError):
-        Calculator("-").calculate(left_operand, right_operand)
+        Calculator("-")(left_operand, right_operand)
 
 
 ########################## MULTIPLICATION TESTS ##########################
@@ -81,7 +81,7 @@ def test_subtraction_incorrect_examples(left_operand: float, right_operand: floa
     ]
 )
 def test_multiplication_correct_examples(left_operand: float, right_operand: float, expected: float) -> None:
-    assert Calculator("*").calculate(left_operand, right_operand) == pytest.approx(expected, abs=0.001)
+    assert Calculator("*")(left_operand, right_operand) == pytest.approx(expected, abs=0.001)
 
 
 @pytest.mark.parametrize(
@@ -96,7 +96,7 @@ def test_multiplication_correct_examples(left_operand: float, right_operand: flo
 )
 def test_multiplication_incorrect_examples(left_operand: float, right_operand: float) -> None:
     with pytest.raises(TypeError):
-        Calculator("*").calculate(left_operand, right_operand)
+        Calculator("*")(left_operand, right_operand)
 
 
 ########################## DIVISION TESTS ##########################
@@ -112,7 +112,7 @@ def test_multiplication_incorrect_examples(left_operand: float, right_operand: f
     ]
 )
 def test_division_correct_examples(left_operand: float, right_operand: float, expected: float) -> None:
-    assert Calculator("/").calculate(left_operand, right_operand) == pytest.approx(expected, abs=0.001)
+    assert Calculator("/")(left_operand, right_operand) == pytest.approx(expected, abs=0.001)
 
 
 @pytest.mark.parametrize(
@@ -127,12 +127,12 @@ def test_division_correct_examples(left_operand: float, right_operand: float, ex
 )
 def test_division_incorrect_examples(left_operand: float, right_operand: float) -> None:
     with pytest.raises(TypeError):
-        Calculator("/").calculate(left_operand, right_operand)
+        Calculator("/")(left_operand, right_operand)
 
 
 def test_division_by_zero() -> None:
     with pytest.raises(ZeroDivisionError):
-        Calculator("/").calculate(1, 0)
+        Calculator("/")(1, 0)
 
     
 ########################## OTHER TESTS ##########################

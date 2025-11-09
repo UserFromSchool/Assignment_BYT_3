@@ -4,19 +4,22 @@ from typing import Literal
 class Calculator:
     """
     Simple calculator class implementation supporting addition, subtraction, multiplication, and division.
-    As task says takes the method as a intialization parameter, not method argument.
+    
+    Note: Task implied the operation and calculation should be done in the initializaiton.
+    I was not sure if I understand correctly and how would that
+    work, so ended up doing operation setting at initialization and then calculations done at calling the class using the operation.
     """
 
     def __init__(self, operation: Literal["+", "-", "*", "/"]):
-        self.mode = operation
+        self._mode = operation
         if operation == "+":
-            self.operation = lambda a, b: self._add(a, b)
+            self._operation = lambda a, b: self._add(a, b)
         elif operation == "-":
-            self.operation = lambda a, b: self._subtract(a, b)
+            self._operation = lambda a, b: self._subtract(a, b)
         elif operation == "*":
-            self.operation = lambda a, b: self._multiply(a, b)
+            self._operation = lambda a, b: self._multiply(a, b)
         elif operation == "/":
-            self.operation = lambda a, b: self._divide(a, b)
+            self._operation = lambda a, b: self._divide(a, b)
         else:
             raise NotImplementedError(f"Operation not supported: {operation}")
 
@@ -43,13 +46,16 @@ class Calculator:
 
     def calculate(self, a: float, b: float) -> float:
         self._validate_operands(a, b)
-        return self.operation(a, b)
+        return self._operation(a, b)
+
+    def __call__(self, a: float, b: float) -> float:
+        return self.calculate(a, b)
 
     def __str__(self) -> str:
-        return f"Caclulator supporting {self.mode} operation."
+        return f"Caclulator supporting {self._mode} operation."
 
     def __repr__(self) -> str:
-        return f"Calculator(mode={self.mode})"
+        return f"Calculator(mode={self._mode})"
         
 
 if __name__ == "__main__":
